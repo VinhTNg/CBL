@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -14,14 +13,9 @@ public class Hero extends JLabel {
      * 
      */
     public Hero() {
-        
-        try {
-            ImageIcon hero = new ImageIcon("hero.png");
-            if (hero.getImageLoadStatus() == MediaTracker.ERRORED) {
-                System.out.println("Error loading image: bla.jpeg");
-            }
-        } catch (Exception e) {
-            System.out.println("Error loading image: " + e.getMessage());
-        }
+        ImageIcon hero = new ImageIcon("hero.jpg");
+        this.setText("|");
+        this.setIcon(hero);
+        this.setBounds(50, 430, 50, 100);
     }
 }
