@@ -14,7 +14,7 @@ public class Hero extends JLabel {
      */
     public Hero() {
         ImageIcon hero = new ImageIcon("hero.jpg");
-        this.setText("|");
+        this.setText("HERO");
         this.setIcon(hero);
         this.setBounds(50, 430, 50, 100);
     }

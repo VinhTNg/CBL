@@ -2,24 +2,24 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+// import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
 /**Create map for the game.
  * 
  */
-public class Map extends JPanel implements ActionListener {
+public class Map extends JPanel implements KeyListener {
     int width = 450;
     int height = 800;
+    Hero hero = new Hero();
+    DrawLine drawLine = new DrawLine();
+
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
-    Hero hero = new Hero();
-    JButton b1 = new JButton("ReGenerate");
-
     Random randomX = new Random();
     Random randomLimX = new Random();
     //space between first land and second land
@@ -41,9 +41,6 @@ public class Map extends JPanel implements ActionListener {
      * 
      */
     public Map() {
-        b1.setBounds(125, 0, 200, 50);
-        b1.addActionListener(this);
-        b1.setFocusable(false);
 
         //set limit for the ground
         firstLand.setBounds(0, 500, newLimLand1, 300);
@@ -57,14 +54,30 @@ public class Map extends JPanel implements ActionListener {
         this.add(firstLand);
         this.add(secLand);
         this.add(hero);
-        this.add(b1);
+        this.setFocusable(true);
     }
 
-    //reGenerate map
+    // @Override
+    // public void paintComponent(Graphics g) {
+    //     super.paintComponent(g);
+    //     g.drawLine(50, 300, 50, 500);
+    // }
+
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == b1) {
-            //create new Land 1 and land 2
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            this.add(drawLine);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            // create new Land 1 and land 2
             newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
             newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
             newX2 = newLimLand1 + newSpace;

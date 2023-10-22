@@ -9,6 +9,7 @@ public class Main {
         Frame frame = new Frame();
         Map map = new Map();
         frame.add(map);
+        frame.addKeyListener(map);
         frame.pack();
     }
 }
