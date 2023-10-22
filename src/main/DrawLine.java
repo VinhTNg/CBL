@@ -14,7 +14,7 @@ public class DrawLine extends JPanel {
      * 
      */
     public DrawLine() {
-        setBounds(50, 0, 10, 100);
+        setBounds(50, 0, 100, 200);
         setLayout(null);
     }
 

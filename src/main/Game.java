@@ -9,10 +9,10 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 
-/**Create map for the game.
+/**Create map and functions for the game.
  * 
  */
-public class Map extends JPanel implements KeyListener {
+public class Game extends JPanel implements KeyListener {
     int width = 450;
     int height = 800;
     Hero hero = new Hero();
@@ -40,7 +40,7 @@ public class Map extends JPanel implements KeyListener {
     /**Constructor for map.
      * 
      */
-    public Map() {
+    public Game() {
 
         //set limit for the ground
         firstLand.setBounds(0, 500, newLimLand1, 300);

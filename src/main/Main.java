@@ -7,9 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
         Frame frame = new Frame();
-        Map map = new Map();
-        frame.add(map);
-        frame.addKeyListener(map);
+        Game game = new Game();
+        frame.add(game);
+        frame.addKeyListener(game);
         frame.pack();
     }
 }
