@@ -13,6 +13,8 @@ import javax.swing.JPanel;
  * 
  */
 public class Map extends JPanel implements ActionListener {
+    int width = 450;
+    int height = 800;
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
     Hero hero = new Hero();
@@ -20,13 +22,20 @@ public class Map extends JPanel implements ActionListener {
 
     Random randomX = new Random();
     Random randomLimX = new Random();
-    int maxSpace = 200;
+    //space between first land and second land
+    int maxSpace = 300;
     int minSpace = 50;
-    int maxLim = 200;
-    int minLim = 100;
-    int newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim - minLim + 1) + minLim);
+    //space for first land
+    int maxLim1 = 100;
+    int minLim1 = 70;
+    //create first land and space between first and second land
+    int newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
     int newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
-    int newX = newLimLand1 + newSpace;
+    int newX2 = newLimLand1 + newSpace;
+    //space for second land
+    int maxLim2 = width - newX2;
+    int minLim2 = newX2 + 20;
+    int newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
 
     /**Constructor for map.
      * 
@@ -38,12 +47,12 @@ public class Map extends JPanel implements ActionListener {
 
         //set limit for the ground
         firstLand.setBounds(0, 500, newLimLand1, 300);
-        secLand.setBounds(newX, 500, 450 - newX, 300);
+        secLand.setBounds(newX2, 500, newLimLand2, 300);
         firstLand.setBackground(Color.black);
         secLand.setBackground(Color.black);
 
         //set up Panel
-        this.setPreferredSize(new Dimension(450, 800));
+        this.setPreferredSize(new Dimension(width, height));
         this.setLayout(null);
         this.add(firstLand);
         this.add(secLand);
@@ -55,12 +64,15 @@ public class Map extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
-            //create new Land
-            newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim - minLim + 1) + minLim);
+            //create new Land 1 and land 2
+            newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
             newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
-            newX = newLimLand1 + newSpace;
+            newX2 = newLimLand1 + newSpace;
+            maxLim2 = width - newX2 + 20;
+            minLim2 = width - newX2 - 50;
+            newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
             firstLand.setBounds(0, 500, newLimLand1, 300);
-            secLand.setBounds(newX, 500, 450 - newX, 300);
+            secLand.setBounds(newX2, 500, newLimLand2, 300);
         }
     }
 }
