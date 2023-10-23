@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 // import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,7 +17,8 @@ public class Game extends JPanel implements KeyListener {
     int width = 450;
     int height = 800;
     Hero hero = new Hero();
-    DrawLine drawLine = new DrawLine();
+    int count = 0;
+    Graphics g;
 
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
@@ -63,6 +65,12 @@ public class Game extends JPanel implements KeyListener {
     //     g.drawLine(50, 300, 50, 500);
     // }
 
+    private void drawLine(Graphics g, int height) {
+        int baseX = 50;
+        int baseY = 500;
+        g.drawLine(baseX, baseY, baseX, baseY + height);
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -70,7 +78,8 @@ public class Game extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            this.add(drawLine);
+            count += 10;
+            // Graphics().drawLine()
         }
     }
 

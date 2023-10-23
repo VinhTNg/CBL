@@ -13,14 +13,4 @@ public class DrawLine extends JPanel {
     /**Constructor of the class.
      * 
      */
-    public DrawLine() {
-        setBounds(50, 0, 100, 200);
-        setLayout(null);
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawLine(0, 0, 0, 100);
-    }
 }
