@@ -17,8 +17,8 @@ public class Game extends JPanel implements KeyListener {
     int width = 450;
     int height = 800;
     Hero hero = new Hero();
-    int count = 0;
-    Graphics g;
+    int count = -10;
+    // Graphics g;
 
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
@@ -59,16 +59,15 @@ public class Game extends JPanel implements KeyListener {
         this.setFocusable(true);
     }
 
-    // @Override
-    // public void paintComponent(Graphics g) {
-    //     super.paintComponent(g);
-    //     g.drawLine(50, 300, 50, 500);
-    // }
-
-    private void drawLine(Graphics g, int height) {
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        count += 10;
         int baseX = 50;
         int baseY = 500;
-        g.drawLine(baseX, baseY, baseX, baseY + height);
+        g.drawLine(baseX, baseY, baseX, baseY - count);
+        g.drawLine(baseX + 1, baseY, baseX + 1, baseY - count);
+        // g.drawLine(baseX + 2, baseY, baseX + 2, baseY - count);
     }
 
     @Override
@@ -77,24 +76,45 @@ public class Game extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            count += 10;
-            // Graphics().drawLine()
+        if (count < 390) {
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                repaint();
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            // create new Land 1 and land 2
-            newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
-            newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
-            newX2 = newLimLand1 + newSpace;
-            maxLim2 = width - newX2 + 20;
-            minLim2 = width - newX2 - 50;
-            newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
-            firstLand.setBounds(0, 500, newLimLand1, 300);
-            secLand.setBounds(newX2, 500, newLimLand2, 300);
+
+            if (count + 50  >= newX2 && count + 50 <= newX2 + newLimLand2) {
+                System.out.println("congrats");
+                // create new Land 1 and land 2
+                // newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
+                // newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
+                // newX2 = newLimLand1 + newSpace;
+                // maxLim2 = width - newX2 + 20;
+                // minLim2 = width - newX2 - 50;
+                // newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
+                // firstLand.setBounds(0, 500, newLimLand1, 300);
+                // secLand.setBounds(newX2, 500, newLimLand2, 300);
+                // count = -10;
+                repaint();
+            }
+            else {
+                // create new Land 1 and land 2
+                System.out.println("Chicken");
+                newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
+                newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
+                newX2 = newLimLand1 + newSpace;
+                maxLim2 = width - newX2 + 20;
+                minLim2 = width - newX2 - 50;
+                newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
+                firstLand.setBounds(0, 500, newLimLand1, 300);
+                secLand.setBounds(newX2, 500, newLimLand2, 300);
+                count = -10;
+                repaint();
+            }
         }
     }
 }
