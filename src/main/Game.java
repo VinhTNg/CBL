@@ -18,7 +18,6 @@ public class Game extends JPanel implements KeyListener {
     int height = 800;
     Hero hero = new Hero();
     int count = -10;
-    // Graphics g;
 
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
