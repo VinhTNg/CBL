@@ -1,16 +1,20 @@
 package main;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.event.*;
-
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class PlayWindow extends JPanel implements ActionListener{
+/**Play window.
+ */
+public class PlayWindow extends JPanel implements ActionListener {
     
-    JLabel label, labelPlay;
-    JButton playButton, backBtn;
+    JLabel label;
+    JLabel labelPlay;
+    JButton playButton;
+    JButton backBtn;
 
+    /**construct play window.
+     */
     PlayWindow() {
         
         backBtn = new JButton("Return");
@@ -34,6 +38,7 @@ public class PlayWindow extends JPanel implements ActionListener{
         ImageIcon playBtnIcon = new ImageIcon("src\\playbutton.png");
         
         playButton = new JButton(playBtnIcon);
+        playButton.addActionListener(this);
         playButton.setLayout(null);
         playButton.setBounds(175, 500, 100, 100);
         playButton.setFocusable(false);
@@ -58,6 +63,16 @@ public class PlayWindow extends JPanel implements ActionListener{
             parent.remove(this);
             FirstInterface firstInterface = new FirstInterface();
             parent.add(firstInterface);
+            parent.revalidate();
+            parent.repaint();
+        }
+        if (e.getSource() == playButton) {
+            Container parent = this.getParent();
+            parent.remove(this);
+            Game game = new Game();
+            parent.add(game);
+            game.requestFocusInWindow();
+            parent.addKeyListener(game);
             parent.revalidate();
             parent.repaint();
         }

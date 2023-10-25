@@ -2,9 +2,13 @@ package main;
 
 import javax.swing.*;
 
+/**Create window for the game.
+ */
 public class Frame extends JFrame {
 
-    Frame() {
+    /**Constructor for frame.
+     */
+    public Frame() {
         ImageIcon logo = new ImageIcon("src\\Icon.jpg"); 
         this.setVisible(true);
         this.setTitle("VN Stick Hero");

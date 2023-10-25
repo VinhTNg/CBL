@@ -89,13 +89,14 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
         //set up Panel
         this.setPreferredSize(new Dimension(width, height));
+        this.setFocusable(true);
         this.setLayout(null);
         this.add(score);
         this.add(record);
         this.add(firstLand);
         this.add(secLand);
         this.add(hero);
-        this.setFocusable(true);
+        this.addKeyListener(this);
     }
 
     @Override
@@ -134,8 +135,8 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 // bridge.baseY = 500;
 
                 //set Hero back to starting position
-                hero.baseX = 48;
-                hero.baseY = 430;
+                hero.baseX = 18;
+                hero.baseY = 400;
                 hero.move();
                 timerStop = false;
 
@@ -144,7 +145,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
                 newX2 = newLimLand1 + newSpace;
                 maxLim2 = width - newX2 - 20;
-                minLim2 = width - newX2 - 50;
+                minLim2 = width - newX2 - 30;
                 newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
                 firstLand.setBounds(0, 500, newLimLand1, 300);
                 secLand.setBounds(newX2, 500, newLimLand2, 300);
@@ -156,7 +157,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (playing) {
                 if (bridge.length < width - hero.baseX) {
-                    repaint();
+                    this.repaint();
                 }
             }
         }
@@ -193,7 +194,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (timer.isRunning()) {
             if (bridge.xRotated >= bridge.length || bridge.yRotated <= 0) {
-                if (hero.baseX < bridge.baseX + bridge.length) {
+                if (hero.baseX < bridge.baseX + bridge.length - 25) {
                     hero.move();
                 } else if (heroLocation < newX2 || heroLocation > newX2 + newLimLand2) {
                     drop = true;

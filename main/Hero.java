@@ -9,8 +9,8 @@ import javax.swing.JLabel;
  */
 public class Hero extends JLabel {
 
-    int baseX = 50;
-    int baseY = 430;
+    int baseX = 20;
+    int baseY = 400;
     int width = 50;
     int height = 100;
 
@@ -21,8 +21,7 @@ public class Hero extends JLabel {
      * 
      */
     public Hero() {
-        ImageIcon hero = new ImageIcon("hero.jpg");
-        this.setText("HERO");
+        ImageIcon hero = new ImageIcon("src\\newhero.png");
         this.setIcon(hero);
         this.setBounds(baseX, baseY, width, height);
     }

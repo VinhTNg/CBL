@@ -1,11 +1,8 @@
 package main;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.event.*;
-import java.io.IOException;
-import java.awt.*;
 
+/**Main class to run game.
+ */
 public class Main {
     
     public static void main(String[] args) {
