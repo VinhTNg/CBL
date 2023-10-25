@@ -1,16 +1,11 @@
 package main;
 
 import java.awt.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class FirstInterface extends JPanel implements ActionListener {
-    JButton btn1, btn2, btn3;    
+    JButton btn1, btn2, btn3; // add 3 buttons   
 
     FirstInterface() {
         this.setBackground(Color.gray);
@@ -25,6 +20,7 @@ public class FirstInterface extends JPanel implements ActionListener {
         btn1.setForeground(Color.BLACK);
         btn1.setBackground(Color.lightGray);
         btn1.setBorder(BorderFactory.createEtchedBorder());
+        btn1.setVisible(true);
 
         btn2 = new JButton("Instructions");
         btn2.addActionListener(this);
@@ -34,6 +30,7 @@ public class FirstInterface extends JPanel implements ActionListener {
         btn2.setForeground(Color.BLACK);
         btn2.setBackground(Color.lightGray);
         btn2.setBorder(BorderFactory.createEtchedBorder());
+        btn2.setVisible(true);
         
         btn3 = new JButton("More");
         btn3.addActionListener(this);
@@ -43,6 +40,7 @@ public class FirstInterface extends JPanel implements ActionListener {
         btn3.setForeground(Color.BLACK);
         btn3.setBackground(Color.lightGray);
         btn3.setBorder(BorderFactory.createEtchedBorder());
+        btn3.setVisible(true);
 
         this.add(btn1);
         this.add(btn2);

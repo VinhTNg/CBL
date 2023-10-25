@@ -1,7 +1,6 @@
 package main;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.event.*;
 
 import java.awt.*;
@@ -60,6 +59,9 @@ public class PlayWindow extends JPanel implements ActionListener{
             parent.add(firstInterface);
             parent.revalidate();
             parent.repaint();
+        }
+        if (e.getSource() == playButton) {
+            Main main = new Main();
         }
     }
 }
