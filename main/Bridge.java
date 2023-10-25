@@ -66,7 +66,6 @@ public class Bridge {
             xRotated = length;
             yRotated = 0;
         }
-        System.out.println(yRotated);
         g.drawLine(baseX, baseY, baseX + xRotated, baseY - yRotated);
         
     }

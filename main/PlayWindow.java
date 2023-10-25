@@ -1,14 +1,15 @@
 package main;
 
-import javax.swing.*;
-import java.awt.event.*;
-
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class PlayWindow extends JPanel implements ActionListener{
     
-    JLabel label, labelPlay;
-    JButton playButton, backBtn;
+    JLabel label;
+    JLabel labelPlay;
+    JButton playButton;
+    JButton backBtn;
 
     PlayWindow() {
         
@@ -66,6 +67,7 @@ public class PlayWindow extends JPanel implements ActionListener{
             parent.remove(this);
             Game game = new Game();
             parent.add(game);
+            game.requestFocusInWindow();
             parent.addKeyListener(game);
             parent.revalidate();
             parent.repaint();

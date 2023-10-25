@@ -89,13 +89,14 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
         //set up Panel
         this.setPreferredSize(new Dimension(width, height));
+        this.setFocusable(true);
         this.setLayout(null);
         this.add(score);
         this.add(record);
         this.add(firstLand);
         this.add(secLand);
         this.add(hero);
-        this.setFocusable(true);
+        this.addKeyListener(this);
     }
 
     @Override
@@ -156,7 +157,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             if (playing) {
                 if (bridge.length < width - hero.baseX) {
-                    repaint();
+                    this.repaint();
                 }
             }
         }
