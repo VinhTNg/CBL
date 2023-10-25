@@ -1,14 +1,18 @@
 package main;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 
-public class MoreWindow extends JPanel implements ActionListener{
+/**More Window.
+ */
+public class MoreWindow extends JPanel implements ActionListener {
     
     JLabel label = new JLabel();
     JButton backBtn;
 
+    /**Constructor for more window.
+     */
     MoreWindow() {
         
         backBtn = new JButton("Return");
@@ -21,7 +25,7 @@ public class MoreWindow extends JPanel implements ActionListener{
         backBtn.setBackground(Color.lightGray);
         backBtn.setBorder(BorderFactory.createEtchedBorder());
 
-        label.setText("<html>"+"This game is made by Vinh and Nam"+"</html>");
+        label.setText("<html>" + "This game is made by Vinh and Nam" + "</html>");
 
         ImageIcon background = new ImageIcon("src\\background.png");
         label.setIcon(background);

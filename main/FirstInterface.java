@@ -4,13 +4,17 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
+/**first screen pop up when open game.
+ */
 public class FirstInterface extends JPanel implements ActionListener {
     // add 3 buttons
     JButton btn1;
     JButton btn2;
     JButton btn3;   
 
+    /**construct first screen pop up when open game.
+     * 
+     */
     FirstInterface() {
         this.setBackground(Color.gray);
         this.setLayout(null);

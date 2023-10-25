@@ -1,20 +1,22 @@
 package main;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
-/**Create frame for game.
- * 
+/**Create window for the game.
  */
 public class Frame extends JFrame {
 
-    /**constructor for frame.
-     * 
+    /**Constructor for frame.
      */
     public Frame() {
+        ImageIcon logo = new ImageIcon("src\\Icon.jpg"); 
         this.setVisible(true);
-        this.setSize(450, 800);
+        this.setTitle("VN Stick Hero");
+        this.setIconImage(logo.getImage());
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setSize(450, 800);
+        this.setLocationRelativeTo(null);
     }
 }

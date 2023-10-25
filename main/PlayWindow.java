@@ -4,13 +4,17 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PlayWindow extends JPanel implements ActionListener{
+/**Play window.
+ */
+public class PlayWindow extends JPanel implements ActionListener {
     
     JLabel label;
     JLabel labelPlay;
     JButton playButton;
     JButton backBtn;
 
+    /**construct play window.
+     */
     PlayWindow() {
         
         backBtn = new JButton("Return");
