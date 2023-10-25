@@ -29,7 +29,6 @@ public class MoreWindow extends JPanel implements ActionListener{
         label.setVerticalTextPosition(JLabel.CENTER);
         label.setFont(new Font("MV Boli", Font.BOLD, 16));
         label.setForeground(Color.BLACK);
-        // label.setLayout(null);
         label.setPreferredSize(new Dimension(450, 800));
         label.add(backBtn);
         

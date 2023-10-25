@@ -6,7 +6,7 @@ package main;
 public class Main {
 
     public static void main(String[] args) {
-        FrameInterface frame = new FrameInterface();
+        Frame frame = new Frame();
         Game game = new Game();
         frame.add(game);
         frame.addKeyListener(game);

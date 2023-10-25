@@ -33,6 +33,7 @@ public class PlayWindow extends JPanel implements ActionListener{
         ImageIcon playBtnIcon = new ImageIcon("src\\playbutton.png");
         
         playButton = new JButton(playBtnIcon);
+        playButton.addActionListener(this);
         playButton.setLayout(null);
         playButton.setBounds(175, 500, 100, 100);
         playButton.setFocusable(false);
@@ -61,7 +62,13 @@ public class PlayWindow extends JPanel implements ActionListener{
             parent.repaint();
         }
         if (e.getSource() == playButton) {
-            Main main = new Main();
+            Container parent = this.getParent();
+            parent.remove(this);
+            Game game = new Game();
+            parent.add(game);
+            parent.addKeyListener(game);
+            parent.revalidate();
+            parent.repaint();
         }
     }
 }

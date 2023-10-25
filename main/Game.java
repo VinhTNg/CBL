@@ -102,7 +102,6 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (drop) {
-            // bridge.drop(g);
             bridge.rotateDown(g);
         } else if (timerStop) {
             bridge.rotate(g);
@@ -155,6 +154,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
             }
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            System.out.println("1");
             if (playing) {
                 if (bridge.length < width - hero.baseX) {
                     repaint();
