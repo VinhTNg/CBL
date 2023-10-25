@@ -14,7 +14,8 @@ public class Hero extends JLabel {
     int width = 50;
     int height = 100;
 
-    int xVelocity = 2;
+    int yVelocity = 2;
+    int xVelocity = 3;
     
     /**Constructor for character.
      * 
@@ -30,6 +31,13 @@ public class Hero extends JLabel {
      */
     public void move() {
         baseX += xVelocity;
+        this.setBounds(baseX, baseY, width, height);
+    }
+
+    /**drop the hero if lose the game.
+     */
+    public void drop() {
+        baseY += yVelocity;
         this.setBounds(baseX, baseY, width, height);
     }
 }

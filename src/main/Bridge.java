@@ -13,7 +13,7 @@ public class Bridge {
     int times = 0;
 
     //create velocity and keep track of angle while rotating the bridge
-    double angularVelocity = Math.PI / 180;
+    double angularVelocity;
     int xVelocity;
     int yVelocity;
     int xRotated = 0;
@@ -32,22 +32,47 @@ public class Bridge {
         }
     }
 
+    public void rotateDown(Graphics g) {
+        angularVelocity = Math.PI / 180;
+        yVelocity = (int) (length * Math.sin(angularVelocity));
+        if (length <= 50) {
+            yVelocity = 1;
+        }
+        yRotated = yRotated + yVelocity;
+        xRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(yRotated, 2))) - 10;
+        if (xRotated < 0 || yRotated > length) {
+            xRotated = 0;
+            yRotated = length;
+        }
+        g.drawLine(baseX, baseY, baseX + xRotated, baseY + yRotated);
+    }
+
+    /**create the animation of the bridge falling straight down.
+     */
+    public void drop(Graphics g) {
+        yVelocity = 4;
+        baseY += yVelocity;
+        g.drawLine(baseX, baseY, baseX + xRotated, baseY);
+    }
+
     /**create the animation of the bridge rotating.
      * 
      */
     public void rotate(Graphics g) {
+        angularVelocity = Math.PI / 180;
         xVelocity = (int) (length * Math.sin(angularVelocity));
         if (length <= 50) {
             xVelocity = 1;
         }
         // yVelocity = yRotated - (int) (length * Math.cos(angularVelocity));
-        xRotated = xRotated + xVelocity;
         // yRotated = yRotated - yVelocity;
+        xRotated = xRotated + xVelocity;
         yRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(xRotated, 2))) - 10;
         if (xRotated >= length || yRotated <= 0) {
             xRotated = length;
             yRotated = 0;
         }
+        System.out.println(yRotated);
         g.drawLine(baseX, baseY, baseX + xRotated, baseY - yRotated);
         
     }

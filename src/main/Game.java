@@ -63,6 +63,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     boolean startAnimation = false;
     boolean timerStop = false;
     boolean playing = true;
+    boolean drop = false;
 
     /**Constructor for map.
      * 
@@ -100,7 +101,10 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (timerStop) {
+        if (drop) {
+            // bridge.drop(g);
+            bridge.rotateDown(g);
+        } else if (timerStop) {
             bridge.rotate(g);
         } else if (!startAnimation) {
             bridge.draw(g);
@@ -123,12 +127,16 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
                 //in case user presses start before the animation is complete
                 timer.stop();
-                bridge.length = 0;
                 startAnimation = false;
+                timerStop = true;
+                drop = false;
+                bridge.length = 0;
                 bridge.xRotated = 0;
+                bridge.baseY = 500;
 
                 //set Hero back to starting position
                 hero.baseX = 48;
+                hero.baseY = 430;
                 hero.move();
                 timerStop = false;
 
@@ -150,7 +158,6 @@ public class Game extends JPanel implements KeyListener, ActionListener {
             if (playing) {
                 if (bridge.length < width - hero.baseX) {
                     repaint();
-                    System.out.println(bridge.length);
                 }
             }
         }
@@ -162,7 +169,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 playing = false;
                 startAnimation = true;
-                System.out.println(bridge.length);
+                bridge.xRotated = 0;
                 bridge.yRotated = bridge.length;
                 heroLocation = bridge.length + hero.baseX;
                 timer.start();
@@ -189,14 +196,29 @@ public class Game extends JPanel implements KeyListener, ActionListener {
             if (bridge.xRotated >= bridge.length || bridge.yRotated <= 0) {
                 if (hero.baseX < bridge.baseX + bridge.length) {
                     hero.move();
+                } else if (heroLocation < newX2 || heroLocation > newX2 + newLimLand2) {
+                    drop = true;
+                    if (hero.baseY < height) {
+                        drop = true;
+                        hero.drop();
+                        this.repaint();
+                    } else {
+                        timer.stop();
+                        drop = false;
+                        timerStop = true;
+                        startAnimation = false;
+                        bridge.length = 0;
+                        bridge.baseY = 500;
+                    }
                 } else {
                     timer.stop();
                     timerStop = true;
-                    bridge.length = 0;
                     startAnimation = false;
-                    bridge.xRotated = 0;
                 }
             } else {
+                if (drop) {
+                    hero.drop();
+                }
                 this.repaint();
             }
         }
