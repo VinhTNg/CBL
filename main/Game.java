@@ -39,10 +39,14 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     //use JPanel to create 2 lands
     JPanel firstLand = new JPanel();
     JPanel secLand = new JPanel();
+    int red;
+    int green;
+    int blue;
 
     //generate random space for 2 lands
     Random randomX = new Random();
     Random randomLimX = new Random();
+    Random random = new Random();
 
     //space between first land and second land
     int maxSpace = 300;
@@ -91,16 +95,20 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         //set up score board and record
         score.setText("Score: " + Integer.toString(point));
         score.setBounds(100, 100, 250, 100);
-        score.setFont(new Font("Serif", Font.PLAIN, 40));
+        score.setFont(new Font("MV Boli", Font.PLAIN, 40));
         record.setText("Record: " + Integer.toString(highestScore));
         record.setBounds(100, 0, 250, 100);
-        record.setFont(new Font("Serif", Font.PLAIN, 40));
+        record.setFont(new Font("MV Boli", Font.PLAIN, 40));
 
-        //set limit for the ground
+        //set up the ground
+        red = (int) (random.nextFloat() * 255);
+        green = (int) (random.nextFloat() * 255);
+        blue = (int) (random.nextFloat() * 255);
+
         firstLand.setBounds(0, 500, newLimLand1, 300);
         secLand.setBounds(newX2, 500, newLimLand2, 300);
-        firstLand.setBackground(new Color(100, 160, 200));
-        secLand.setBackground(new Color(100, 160, 200));
+        firstLand.setBackground(new Color(red, green, blue));
+        secLand.setBackground(new Color(red, green, blue));
 
         //set up Panel
         this.setPreferredSize(new Dimension(width, height));
@@ -156,7 +164,12 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 hero.move();
                 timerStop = false;
 
-                // create new Land 1 and Land 2
+                // recreate Land 1 and Land 2
+                red = (int) (random.nextFloat() * 255);
+                green = (int) (random.nextFloat() * 255);
+                blue = (int) (random.nextFloat() * 255);
+                firstLand.setBackground(new Color(red, green, blue));
+                secLand.setBackground(new Color(red, green, blue));
                 newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
                 newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
                 newX2 = newLimLand1 + newSpace;
