@@ -1,17 +1,17 @@
 package main;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 
-public class InstructionsWindow extends JPanel implements ActionListener{
+public class InstructionsWindow extends JPanel implements ActionListener {
     
     JLabel label = new JLabel();
     JButton backBtn;
     
-    InstructionsWindow() {
+    public InstructionsWindow() {
         
-        label.setText("<html>"+"Hold the space bar to increase the length of the bridge. <br> The length of the bridge cannot be shorter than the distance of two stops. <br> The length of the bridge cannot be longer than the distance of two stops and the length of the next stop combined."+"</html>");
+        label.setText("<html>" + "Hold the space bar to increase the length of the bridge. <br> The length of the bridge cannot be shorter than the distance of two stops. <br> The length of the bridge cannot exceed the second stop. <br> Tap enter to continue playing." + "</html>");
 
 
         backBtn = new JButton("Return");

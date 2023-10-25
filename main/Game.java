@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -9,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -23,7 +26,8 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     int height = 800;
     Hero hero = new Hero();
     Bridge bridge = new Bridge();
-    int heroLocation = hero.baseX + bridge.length;
+    JButton back;
+    int heroLocation;
 
     //create score board and highest record
     JLabel score = new JLabel();
@@ -73,6 +77,17 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         //create timer for animation
         timer = new Timer(10, this);
 
+        //set up return button
+        back = new JButton("Return");
+        back.addActionListener(this);
+        back.setBounds(340, 0, 100, 30);
+        back.setFocusable(false);
+        back.setFont(new Font("MV Boli", Font.BOLD, 25));
+        back.setForeground(Color.BLACK);
+        back.setBackground(Color.lightGray);
+        back.setBorder(BorderFactory.createEtchedBorder());
+        back.setVisible(true);
+
         //set up score board and record
         score.setText("Score: " + Integer.toString(point));
         score.setBounds(100, 100, 250, 100);
@@ -84,13 +99,14 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         //set limit for the ground
         firstLand.setBounds(0, 500, newLimLand1, 300);
         secLand.setBounds(newX2, 500, newLimLand2, 300);
-        firstLand.setBackground(Color.black);
-        secLand.setBackground(Color.black);
+        firstLand.setBackground(new Color(100, 160, 200));
+        secLand.setBackground(new Color(100, 160, 200));
 
         //set up Panel
         this.setPreferredSize(new Dimension(width, height));
         this.setFocusable(true);
         this.setLayout(null);
+        this.add(back);
         this.add(score);
         this.add(record);
         this.add(firstLand);
@@ -132,10 +148,10 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 drop = false;
                 bridge.length = 0;
                 bridge.xRotated = 0;
-                // bridge.baseY = 500;
+                bridge.baseY = 500;
 
                 //set Hero back to starting position
-                hero.baseX = 18;
+                hero.baseX = 17;
                 hero.baseY = 400;
                 hero.move();
                 timerStop = false;
@@ -171,7 +187,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 startAnimation = true;
                 bridge.xRotated = 0;
                 bridge.yRotated = bridge.length;
-                heroLocation = bridge.length + hero.baseX;
+                heroLocation = bridge.length + bridge.baseX;
                 timer.start();
                 if (heroLocation >= newX2 && heroLocation <= newX2 + newLimLand2) {
                     tempScore++;
@@ -192,6 +208,15 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == back) {
+            timer.stop();
+            Container parent = this.getParent();
+            parent.removeAll();
+            PlayWindow playWindow = new PlayWindow();
+            parent.add(playWindow);
+            parent.revalidate();
+            parent.repaint();
+        }
         if (timer.isRunning()) {
             if (bridge.xRotated >= bridge.length || bridge.yRotated <= 0) {
                 if (hero.baseX < bridge.baseX + bridge.length - 25) {
