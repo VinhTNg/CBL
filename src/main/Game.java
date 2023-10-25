@@ -62,7 +62,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     Timer timer;
     boolean startAnimation = false;
     boolean timerStop = false;
-    boolean recordScore = true;
+    boolean playing = true;
 
     /**Constructor for map.
      * 
@@ -118,35 +118,36 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
         //get to next level
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (!playing) {
+                playing = true;
 
-            recordScore = true;
+                //in case user presses start before the animation is complete
+                timer.stop();
+                bridge.length = 0;
+                startAnimation = false;
+                bridge.xRotated = 0;
 
-            //in case user presses start before the animation is complete
-            timer.stop();
-            bridge.length = 0;
-            startAnimation = false;
-            bridge.xRotated = 0;
+                //set Hero back to starting position
+                hero.baseX = 48;
+                hero.move();
+                timerStop = false;
 
-            //set Hero back to starting position
-            hero.baseX = 48;
-            hero.move();
-            timerStop = false;
-
-            // create new Land 1 and Land 2
-            newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
-            newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
-            newX2 = newLimLand1 + newSpace;
-            maxLim2 = width - newX2 - 20;
-            minLim2 = width - newX2 - 50;
-            newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
-            firstLand.setBounds(0, 500, newLimLand1, 300);
-            secLand.setBounds(newX2, 500, newLimLand2, 300);
-            bridge.length = 0;
-            bridge.times = 0;
-            this.repaint();
+                // create new Land 1 and Land 2
+                newLimLand1 = (int) (randomLimX.nextFloat() * (maxLim1 - minLim1 + 1) + minLim1);
+                newSpace = (int) (randomX.nextFloat() * (maxSpace - minSpace + 1) + minSpace);
+                newX2 = newLimLand1 + newSpace;
+                maxLim2 = width - newX2 - 20;
+                minLim2 = width - newX2 - 50;
+                newLimLand2 = (int) (randomLimX.nextFloat() * (maxLim2 - minLim2 + 1) + minLim2);
+                firstLand.setBounds(0, 500, newLimLand1, 300);
+                secLand.setBounds(newX2, 500, newLimLand2, 300);
+                bridge.length = 0;
+                bridge.times = 0;
+                this.repaint();
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            if (recordScore) {
+            if (playing) {
                 if (bridge.length < width - hero.baseX) {
                     repaint();
                     System.out.println(bridge.length);
@@ -157,9 +158,9 @@ public class Game extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (recordScore) {
+        if (playing) {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                recordScore = false;
+                playing = false;
                 startAnimation = true;
                 System.out.println(bridge.length);
                 bridge.yRotated = bridge.length;

@@ -43,7 +43,7 @@ public class Bridge {
         // yVelocity = yRotated - (int) (length * Math.cos(angularVelocity));
         xRotated = xRotated + xVelocity;
         // yRotated = yRotated - yVelocity;
-        yRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(xRotated, 2))) - 1;
+        yRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(xRotated, 2))) - 10;
         if (xRotated >= length || yRotated <= 0) {
             xRotated = length;
             yRotated = 0;
