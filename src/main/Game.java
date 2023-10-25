@@ -29,7 +29,8 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     JLabel score = new JLabel();
     int point = 0;
     JLabel record = new JLabel();
-    int highestScore;
+    int tempScore;
+    int highestScore = 0;
 
     //use JPanel to create 2 lands
     JPanel firstLand = new JPanel();
@@ -71,10 +72,13 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         //create timer for animation
         timer = new Timer(10, this);
 
-        //set up score board
-        score.setText(Integer.toString(point));
-        score.setBounds(225, 100, 100, 100);
+        //set up score board and record
+        score.setText("Score: " + Integer.toString(point));
+        score.setBounds(100, 100, 250, 100);
         score.setFont(new Font("Serif", Font.PLAIN, 40));
+        record.setText("Record: " + Integer.toString(highestScore));
+        record.setBounds(100, 0, 250, 100);
+        record.setFont(new Font("Serif", Font.PLAIN, 40));
 
         //set limit for the ground
         firstLand.setBounds(0, 500, newLimLand1, 300);
@@ -86,6 +90,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         this.setPreferredSize(new Dimension(width, height));
         this.setLayout(null);
         this.add(score);
+        this.add(record);
         this.add(firstLand);
         this.add(secLand);
         this.add(hero);
@@ -155,17 +160,23 @@ public class Game extends JPanel implements KeyListener, ActionListener {
         if (recordScore) {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 recordScore = false;
-                bridge.length -= 10;
                 startAnimation = true;
+                System.out.println(bridge.length);
                 bridge.yRotated = bridge.length;
-                timer.start();
                 heroLocation = bridge.length + hero.baseX;
+                timer.start();
                 if (heroLocation >= newX2 && heroLocation <= newX2 + newLimLand2) {
+                    tempScore++;
                     point++;
-                    score.setText(Integer.toString(point));
+                    score.setText("Score: " + Integer.toString(point));
                 } else {
+                    if (tempScore >= highestScore) {
+                        highestScore = tempScore;
+                    }
+                    tempScore = 0;
                     point = 0;
-                    score.setText(Integer.toString(point));
+                    score.setText("Score: " + Integer.toString(point));
+                    record.setText("Record: " + Integer.toString(highestScore));
                 }
             }
         }

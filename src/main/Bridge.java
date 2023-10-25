@@ -37,10 +37,13 @@ public class Bridge {
      */
     public void rotate(Graphics g) {
         xVelocity = (int) (length * Math.sin(angularVelocity));
+        if (length <= 50) {
+            xVelocity = 1;
+        }
         // yVelocity = yRotated - (int) (length * Math.cos(angularVelocity));
         xRotated = xRotated + xVelocity;
         // yRotated = yRotated - yVelocity;
-        yRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(xRotated, 2)));
+        yRotated = (int) Math.sqrt((Math.pow(length, 2) - Math.pow(xRotated, 2))) - 1;
         if (xRotated >= length || yRotated <= 0) {
             xRotated = length;
             yRotated = 0;
