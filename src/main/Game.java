@@ -102,7 +102,6 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (drop) {
-            // bridge.drop(g);
             bridge.rotateDown(g);
         } else if (timerStop) {
             bridge.rotate(g);
@@ -132,7 +131,7 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                 drop = false;
                 bridge.length = 0;
                 bridge.xRotated = 0;
-                bridge.baseY = 500;
+                // bridge.baseY = 500;
 
                 //set Hero back to starting position
                 hero.baseX = 48;
@@ -208,7 +207,6 @@ public class Game extends JPanel implements KeyListener, ActionListener {
                         timerStop = true;
                         startAnimation = false;
                         bridge.length = 0;
-                        bridge.baseY = 500;
                     }
                 } else {
                     timer.stop();

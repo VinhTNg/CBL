@@ -1,14 +1,6 @@
 package main;
 
-import java.awt.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 
 public class Frame extends JFrame {
 

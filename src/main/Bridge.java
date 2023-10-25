@@ -32,6 +32,8 @@ public class Bridge {
         }
     }
 
+    /**Create animation the bridge falling down.
+     */
     public void rotateDown(Graphics g) {
         angularVelocity = Math.PI / 180;
         yVelocity = (int) (length * Math.sin(angularVelocity));
@@ -45,14 +47,6 @@ public class Bridge {
             yRotated = length;
         }
         g.drawLine(baseX, baseY, baseX + xRotated, baseY + yRotated);
-    }
-
-    /**create the animation of the bridge falling straight down.
-     */
-    public void drop(Graphics g) {
-        yVelocity = 4;
-        baseY += yVelocity;
-        g.drawLine(baseX, baseY, baseX + xRotated, baseY);
     }
 
     /**create the animation of the bridge rotating.
