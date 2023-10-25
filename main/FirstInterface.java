@@ -1,11 +1,15 @@
 package main;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
+
 
 public class FirstInterface extends JPanel implements ActionListener {
-    JButton btn1, btn2, btn3; // add 3 buttons   
+    // add 3 buttons
+    JButton btn1;
+    JButton btn2;
+    JButton btn3;   
 
     FirstInterface() {
         this.setBackground(Color.gray);
