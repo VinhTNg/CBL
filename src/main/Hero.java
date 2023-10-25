@@ -8,6 +8,13 @@ import javax.swing.JLabel;
  * 
  */
 public class Hero extends JLabel {
+
+    int baseX = 50;
+    int baseY = 430;
+    int width = 50;
+    int height = 100;
+
+    int xVelocity = 2;
     
     /**Constructor for character.
      * 
@@ -16,6 +23,13 @@ public class Hero extends JLabel {
         ImageIcon hero = new ImageIcon("hero.jpg");
         this.setText("HERO");
         this.setIcon(hero);
-        this.setBounds(50, 430, 50, 100);
+        this.setBounds(baseX, baseY, width, height);
+    }
+
+    /**Move the hero to the final coordinates of the rotated bridge.
+     */
+    public void move() {
+        baseX += xVelocity;
+        this.setBounds(baseX, baseY, width, height);
     }
 }
