@@ -32,7 +32,6 @@ public class InstructionsWindow extends JPanel implements ActionListener {
         label.setForeground(Color.BLACK);
         label.setLayout(null);
         label.setPreferredSize(new Dimension(440, 800));
-        // label.setBounds(0, 0, 450, 800);
         label.add(backBtn);
 
         this.setPreferredSize(new Dimension(450, 800));
