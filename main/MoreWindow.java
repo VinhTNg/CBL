@@ -25,7 +25,7 @@ public class MoreWindow extends JPanel implements ActionListener {
         backBtn.setBackground(Color.lightGray);
         backBtn.setBorder(BorderFactory.createEtchedBorder());
 
-        label.setText("<html>" + "This game is made by Vinh and Nam" + "</html>");
+        label.setText("<html>" + "This game is made by Vinh Nguyen and Nam Mai <br> ID: 1957104 and 1959190" + "</html>");
 
         ImageIcon background = new ImageIcon("src\\background.png");
         label.setIcon(background);

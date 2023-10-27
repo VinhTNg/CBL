@@ -40,7 +40,7 @@ public class FirstInterface extends JPanel implements ActionListener {
         btn2.setBorder(BorderFactory.createEtchedBorder());
         btn2.setVisible(true);
         
-        btn3 = new JButton("More");
+        btn3 = new JButton("Credit");
         btn3.addActionListener(this);
         btn3.setBounds(150, 160, 150, 30);
         btn3.setFocusable(false);
