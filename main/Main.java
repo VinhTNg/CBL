@@ -9,5 +9,6 @@ public class Main {
         Frame frame = new Frame();
         FirstInterface firstInterface = new FirstInterface();
         frame.add(firstInterface);
+        frame.pack();
     }
 }

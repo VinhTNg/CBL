@@ -47,7 +47,7 @@ public class PlayWindow extends JPanel implements ActionListener {
         ImageIcon background = new ImageIcon("src\\background.png");
         label.setIcon(background);
         label.setLayout(null);
-        label.setPreferredSize(new Dimension(440, 800));
+        label.setPreferredSize(new Dimension(450, 800));
         label.add(labelPlay);
         label.add(playButton);
         label.add(backBtn);

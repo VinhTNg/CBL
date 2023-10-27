@@ -11,9 +11,9 @@ public class FirstInterface extends JPanel implements ActionListener {
     JButton btn1;
     JButton btn2;
     JButton btn3;
-    
-    // add a label
-    JLabel label = new JLabel();
+
+    //background image
+    ImageIcon backgroundImage = new ImageIcon("src\\background.png");
 
     /**construct first screen pop up when open game.
      * 
@@ -53,20 +53,18 @@ public class FirstInterface extends JPanel implements ActionListener {
         btn3.setBackground(Color.lightGray);
         btn3.setBorder(BorderFactory.createEtchedBorder());
         btn3.setVisible(true);
-
-        ImageIcon backgroundImage = new ImageIcon("src\\background.png");
         
-        // this.setPreferredSize(new Dimension(450, 800));
-
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, 447, 810);
-
-        // this.setOpaque(true);
+        this.setPreferredSize(new Dimension(450, 800));
         
+        this.setDoubleBuffered(true);
         this.add(btn1);
         this.add(btn2);
         this.add(btn3);
-        this.add(backgroundLabel);
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
     }
 
     @Override

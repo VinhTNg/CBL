@@ -31,7 +31,7 @@ public class InstructionsWindow extends JPanel implements ActionListener {
         label.setFont(new Font("MV Boli", Font.BOLD, 16));
         label.setForeground(Color.BLACK);
         label.setLayout(null);
-        label.setPreferredSize(new Dimension(440, 800));
+        label.setPreferredSize(new Dimension(450, 800));
         label.add(backBtn);
 
         this.setPreferredSize(new Dimension(450, 800));
