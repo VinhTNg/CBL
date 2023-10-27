@@ -12,9 +12,6 @@ public class FirstInterface extends JPanel implements ActionListener {
     JButton btn2;
     JButton btn3;
 
-    //background image
-    ImageIcon backgroundImage = new ImageIcon("src\\background.png");
-
     /**construct first screen pop up when open game.
      * 
      */
@@ -62,7 +59,11 @@ public class FirstInterface extends JPanel implements ActionListener {
         this.add(btn3);
     }
 
+    /**Paint background.
+     */
     protected void paintComponent(Graphics g) {
+        //background image
+        ImageIcon backgroundImage = new ImageIcon("src\\background.png");
         super.paintComponent(g);
         g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
     }
