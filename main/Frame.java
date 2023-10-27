@@ -9,7 +9,7 @@ public class Frame extends JFrame {
     /**Constructor for frame.
      */
     public Frame() {
-        ImageIcon logo = new ImageIcon("src\\Icon.jpg"); 
+        ImageIcon logo = new ImageIcon("src\\newlogo.png"); 
         this.setVisible(true);
         this.setTitle("VN Stick Hero");
         this.setIconImage(logo.getImage());
