@@ -14,7 +14,7 @@ public class Hero extends JLabel {
     int width = 50;
     int height = 100;
 
-    int yVelocity = 2;
+    int yVelocity = 3;
     int xVelocity = 3;
     
     /**Constructor for character.
