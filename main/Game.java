@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -126,6 +127,8 @@ public class Game extends JPanel implements KeyListener, ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        ImageIcon backgroundImage = new ImageIcon("src\\background.png");
+        g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
         if (drop) {
             bridge.rotateDown(g);
         } else if (timerStop) {
